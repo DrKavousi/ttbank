@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروپوزال سند جامع هویت برند بانک توسعه تعاون</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --accent-color: #90e0ef;
+            --text-color: #03045e;
+            --light-text-color: #ffffff;
+            --bg-color-start: #caf0f8;
+            --bg-color-end: #e2f6fc;
+            --card-bg-color: rgba(255, 255, 255, 0.45);
+            --card-border-color: rgba(255, 255, 255, 0.7);
+            --danger-color: #d00000;
+            --success-color: #4c956c;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, var(--bg-color-start), var(--bg-color-end));
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 16px;
+            overflow-x: hidden;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Glassmorphism Card Style */
+        .card {
+            background: var(--card-bg-color);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--card-border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; color: var(--secondary-color); }
+        h4 { font-size: 1.2rem; color: var(--text-color); font-weight: 600; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-right: 20px;
+        }
+
+        ul li {
+            position: relative;
+            margin-bottom: 0.75rem;
+            padding-right: 25px;
+        }
+
+        ul li::before {
+            content: '🔹';
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--secondary-color);
+            font-size: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        /* Header / Cover Page */
+        .header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('back.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header .logo {
+            max-width: 180px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.1));
+        }
+
+        .header h1 {
+            color: var(--text-color);
+        }
+
+        .header .meta-info {
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        /* Section Specific Styles */
+        .icon-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .icon-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .challenge .icon { color: var(--danger-color); }
+        .opportunity .icon { color: var(--success-color); }
+
+        .scope-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            position: relative;
+        }
+        .scope-center {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(0, 119, 182, 0.5);
+        }
+        .scope-item {
+            background: white;
+            border: 2px solid var(--accent-color);
+            padding: 1rem;
+            border-radius: 15px;
+            width: 150px;
+            text-align: center;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .scope-item:hover {
+            transform: scale(1.05);
+            border-color: var(--secondary-color);
+        }
+
+        /* Structure Roadmap */
+        .roadmap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .roadmap-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        .roadmap-item:hover {
+            background: white;
+            border-color: var(--primary-color);
+        }
+        .roadmap-number {
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: 700;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Phases Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 19px; /* Adjust based on circle size */
+            height: 100%;
+            width: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-right: 50px;
+        }
+        .timeline-dot {
+            position: absolute;
+            right: 0;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: var(--primary-color);
+            z-index: 1;
+        }
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        /* Gantt Chart */
+        .gantt-chart-container {
+            width: 100%;
+            overflow-x: auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 15px;
+        }
+        .gantt-chart {
+            display: grid;
+            grid-template-columns: 150px repeat(12, 1fr); /* 12 weeks */
+            gap: 5px;
+            min-width: 800px;
+        }
+        .gantt-header {
+            font-weight: 600;
+            text-align: center;
+            padding: 0.5rem;
+            background: var(--bg-color-start);
+            font-size: 0.9rem;
+        }
+        .gantt-phase {
+            font-weight: 500;
+            padding: 0.5rem;
+            text-align: right;
+            border-left: 3px solid var(--primary-color);
+        }
+        .gantt-bar-container {
+            grid-column: 2 / -1;
+            position: relative;
+        }
+        .gantt-bar {
+            position: absolute;
+            height: 70%;
+            top: 15%;
+            border-radius: 10px;
+            background-color: var(--secondary-color);
+            opacity: 0.8;
+        }
+        .gantt-bar-1 { right: 0; width: calc(3/12 * 100%); background-color: #48cae4;}
+        .gantt-bar-2 { right: calc(3/12 * 100%); width: calc(2/12 * 100%); background-color: #00b4d8;}
+        .gantt-bar-3 { right: calc(5/12 * 100%); width: calc(4/12 * 100%); background-color: #0096c7;}
+        .gantt-bar-4 { right: calc(9/12 * 100%); width: calc(2/12 * 100%); background-color: #0077b6;}
+        .gantt-bar-5 { right: calc(11/12 * 100%); width: calc(1/12 * 100%); background-color: #023e8a;}
+
+        /* Cost Table */
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .cost-table th, .cost-table td {
+            padding: 1rem;
+            text-align: right;
+            border-bottom: 1px solid var(--accent-color);
+        }
+        .cost-table th {
+            background: var(--bg-color-start);
+            font-weight: 600;
+        }
+        .cost-table tr:last-child td {
+            border-bottom: none;
+        }
+        .total-cost {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .total-cost td:first-child {
+             border-bottom-right-radius: 15px;
+        }
+        .total-cost td:last-child {
+             border-bottom-left-radius: 15px;
+        }
+
+        /* Value Proposition Grid */
+        .value-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .value-card .icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Call to Action */
+        .cta-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            text-align: center;
+            color: white;
+        }
+        .cta-card p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: var(--bg-color-start);
+        }
+
+        @media (max-width: 992px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .scope-diagram { flex-direction: column; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- صفحه جلد -->
+    <header class="card header">
+        <img src="TTBank.png" alt="لوگوی بانک توسعه تعاون" class="logo">
+        <h1>پیشنهاد تدوین سند جامع هویت برند بانک توسعه تعاون</h1>
+        <div class="meta-info">
+            <p> دکتر نازنین کاوسی | تاریخ ارائه: ۱۴۰۴/۰۵/۲۱</p>
+        </div>
+    </header>
+
+    <!-- بخش ۱ – معرفی و ضرورت پروژه -->
+    <section class="card">
+        <h2>بخش ۱: معرفی و ضرورت پروژه</h2>
+        <h3>جایگاه و ضرورت برندینگ بانک توسعه تعاون</h3>
+        <p>در روزگار پرشتاب و دگرگون امروز، که صنعت بانکداری در تلاطم رقابت، نوآوری و بی‌ثباتی‌های اقتصادی پیش می‌رود، هویت یکپارچه و هم‌صدا درون سازمان، دیگر امتیازی تجملی نیست؛ بلکه بنیانی است حیاتی برای بقا، بالندگی و پیشتازی.</p>
+        <p>بانک توسعه تعاون، به‌عنوان بازوی راهبردی دولت در توانمندسازی بخش تعاون و تقویت تولید ملی، با درک ژرف این ضرورت، بر آن است که هویت برند خود را نه صرفاً به‌عنوان نشانی بر سر در شعب، بلکه به‌مثابه تبلور رسالت، منش و بینش خویش پاس دارد و بپرورد. ما باور داریم که برند، سرمایه‌ای زنده و پویاست؛ پلی است میان راهبرد و فرهنگ، میان وعده‌ای که به جامعه می‌دهیم و تجربه‌ای که به مشتری می‌بخشیم.</p>
+        <p>برای بانک توسعه تعاون، برندسازی فرآیندی ایستا و مقطعی نیست، بلکه حرکتی پیوسته، هوشمند و آینده‌نگر است که پیوندی استوار میان رفتار، گفتار و اندیشه همه کارکنان ایجاد می‌کند. این هویت، باید در ذهن مشتریان، نماد اعتماد و ثبات، و در قلب آنان، مایه امید و اطمینان باشد.</p>
+        <p>با اتکا به سرمایه انسانی متعهد، پایبندی به ارزش‌های تعاون و مسئولیت اجتماعی، و همسویی با استانداردهای نوین بانکداری جهانی، این مسیر را می‌پیماییم تا جایگاه بانک توسعه تعاون، به‌عنوان نمادی معتبر، پیشرو و ماندگار در حافظه ملی و وجدان اجتماعی کشور، بیش از پیش استوار گردد.</p>
+        
+        <br>
+        <h3>نقش هویت برند در افزایش اعتماد و تمایز رقابتی</h3>
+        <p>تنها مزیت رقابتی پایدار یک سازمان، برند است. تنها مزیت رقابتی پایدار هر سازمان، برندی است که در ذهن‌ها می‌درخشد و در دل‌ها می‌ماند؛ سرمایه‌ای بی‌همتا که توان آن را دارد تا جایگاه را استوار، اعتماد را ماندگار و مسیر رشد را روشن و پرفروغ نگاه دارد. بانک توسعه تعاون، به‌عنوان نماد حمایت از بخش تعاون و پشتیبان تولید ملی، با درک ژرف این حقیقت، گامی استوار و آینده‌نگر در مسیر بنیان‌گذاری هویت برند خود برمی‌دارد. تالیف «سند هویت برند بانک توسعه تعاون» نه صرفاً یک اقدام اجرایی، بلکه نقطه عزیمت به سوی مدیریت راهبردی ارتباطات و ساختن پلی است میان زبان برند و دل‌های تمامی مشتریان، ذی‌نفعان و همراهانی که با آن هم‌آواز می‌شوند و در کنار هم، معنای اعتماد و پیشرفت را می‌آفرینند.</p>
+
+        <div class="grid grid-2">
+            <div class="card challenge">
+                <h4>چالش‌های فعلی</h4>
+                <div class="icon-card">
+                    <div class="icon">⚠️</div>
+                    <h5>عدم همسویی و یکپارچگی هویت بصری و کلامی</h5>
+                    <p>بروز ناهماهنگی در پیام‌ها و جلوه‌های گرافیکی.</p>
+                </div>
+                <div class="icon-card">
+                    <div class="icon">📄</div>
+                    <h5>نبود دستورالعمل رسمی برای ارتباطات</h5>
+                    <p>پراکندگی رویکردها و تضعیف انسجام سازمانی.</p>
+                </div>
+            </div>
+            <div class="card opportunity">
+                <h4>فرصت‌ها و مزایا</h4>
+                <div class="icon-card">
+                    <div class="icon">✅</div>
+                    <h5>افزایش همخوانی پیام برند</h5>
+                    <p>ایجاد انسجام در تمامی کانال‌های ارتباطی.</p>
+                </div>
+                <div class="icon-card">
+                    <div class="icon">🌟</div>
+                    <h5>ارتقای تجربه مشتری و تصویر ذهنی</h5>
+                    <p>افزایش محبوبیت و شهرت بانک به عنوان نهادی معتبر.</p>
+                </div>
+            </div>
+        </div>
+        <p>در وضعیت کنونی، بانک توسعه تعاون با دو چالش اساسی در حوزه برندینگ مواجه است: نخست، نبود همسویی و یکپارچگی میان هویت بصری و کلامی که موجب بروز ناهماهنگی در پیام‌ها، جلوه‌های گرافیکی و لحن ارتباطی بانک در کانال‌های مختلف شده است؛ دوم، فقدان یک دستورالعمل رسمی و مدون برای مدیریت ارتباطات داخلی و خارجی که باعث پراکندگی رویکردها، کاهش اثربخشی پیام‌ها و تضعیف انسجام سازمانی در تعامل با ذی‌نفعان می‌شود.</p>
+        <p>استقرار سند هویت برند بانک توسعه تعاون، با ایجاد همخوانی و انسجام در پیام‌ها و جلوه‌های بصری و کلامی بانک در تمامی کانال‌های ارتباطی، زمینه‌ساز تجربه‌ای یکپارچه و متمایز برای مشتریان خواهد شد؛ تجربه‌ای که نه‌تنها تصویر ذهنی بانک را در نگاه مخاطبان ارتقا می‌دهد، بلکه به افزایش محبوبیت و شهرت آن در میان تمامی ذی‌نفعان ـ از مشتریان و کارکنان گرفته تا شرکا، نهادهای نظارتی و افکار عمومی ـ می‌انجامد و جایگاه بانک را به‌عنوان نهادی معتبر، قابل اعتماد و پیشرو بیش از پیش استحکام می‌بخشد.</p>
+    </section>
+
+    <!-- بخش ۲ – هدف و دامنه کار -->
+    <section class="card">
+        <h2>بخش ۲: هدف و دامنه کار</h2>
+        <div class="grid grid-3">
+            <div class="icon-card">
+                <div class="icon">🎯</div>
+                <h4>هدف اصلی پروژه</h4>
+                <p>تدوین سند جامع و رسمی هویت برند برای استحکام جایگاه برند و تبدیل آن به مزیتی رقابتی و پایدار.</p>
+            </div>
+            <div class="icon-card">
+                <div class="icon">🎨</div>
+                <h4>یکپارچه‌سازی هویت</h4>
+                <p>ایجاد همسویی در هویت بصری، کلامی و حسی بانک.</p>
+            </div>
+            <div class="icon-card">
+                <div class="icon">⚙️</div>
+                <h4>تدوین استانداردها</h4>
+                <p>ایجاد استانداردهای مشخص برای برند در فضای دیجیتال و فیزیکی.</p>
+            </div>
+        </div>
+        <p>هدف اصلی این پروژه، تدوین یک سند جامع و رسمی برای هویت برند بانک توسعه تعاون است؛ سندی که با ایجاد انسجام و هم‌سویی در پیام‌ها، عناصر بصری و لحن ارتباطی، جایگاه برند را در ذهن و قلب تمامی ذی‌نفعان استحکام بخشد و آن را به مزیتی رقابتی و پایدار تبدیل کند. این اقدام، نه‌تنها بنیان‌گذار زبان مشترک میان بانک و مخاطبانش خواهد بود، بلکه بیانگر نگاه حرفه‌ای و آینده‌نگر مدیران بانک در مدیریت راهبردی ارتباطات و سرمایه برند است.</p>
+        
+        <h3>دامنه پوشش سند</h3>
+        <p>دامنه پوشش این سند، ابعاد و نقاط تماس اصلی برند بانک توسعه تعاون را در بر می‌گیرد تا یکپارچگی هویت و انسجام پیام در هر شرایط و کانالی تضمین شود. این دامنه شامل:</p>
+        <div class="scope-diagram">
+            <div class="scope-center">سند جامع هویت برند</div>
+            <div class="scope-item">📄 اقلام چاپی</div>
+            <div class="scope-item">💻 اقلام دیجیتال</div>
+            <div class="scope-item">🏦 اقلام محیطی</div>
+            <div class="scope-item">🤝 تجربه مشتری</div>
+        </div>
+    </section>
+    
+    <!-- بخش ۳ – ساختار پیشنهادی سند هویت برند -->
+    <section class="card">
+        <h2>بخش ۳: ساختار پیشنهادی سند هویت برند</h2>
+        <div class="roadmap-container">
+            <div class="roadmap-item"><div class="roadmap-number">۰</div><div>فصل آغازین</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۱</div><div>بنیان‌های راهبردی برند</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۲</div><div>معماری و ساختار برند</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۳</div><div>هویت بصری برند</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۴</div><div>هویت کلامی</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۵</div><div>تجربه مشتری و هویت حسی</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۶</div><div>اقلام سازمانی</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۷</div><div>هویت دیجیتال</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۸</div><div>ارتباطات بازاریابی</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۹</div><div>مدیریت بحران برند</div></div>
+            <div class="roadmap-item"><div class="roadmap-number">۱۰</div><div>پیوست‌ها</div></div>
+        </div>
+    </section>
+
+    <!-- بخش ۴ – روش اجرا و فازبندی پروژه -->
+    <section class="card">
+        <h2>بخش ۴: روش اجرا و فازبندی پروژه</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot">۱</div>
+                <div class="timeline-content">
+                    <h4>فاز ۱: جمع‌آوری و به روزرسانی داده‌ها</h4>
+                    <p>تحقیق، تحلیل رقبا، و مصاحبه برای درک عمیق از وضعیت موجود.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">۲</div>
+                <div class="timeline-content">
+                    <h4>فاز ۲: تدوین پیش‌نویس و ساختار سند</h4>
+                    <p>طراحی ساختار و نگارش محتوای اولیه بر اساس داده‌های فاز اول.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">۳</div>
+                <div class="timeline-content">
+                    <h4>فاز ۳: طراحی گرافیکی و نمونه‌سازی</h4>
+                    <p>خلق هویت بصری، طراحی قالب‌ها و نمونه‌سازی اقلام برند.</p>
+                </div>
+            </div>
+             <div class="timeline-item">
+                <div class="timeline-dot">۴</div>
+                <div class="timeline-content">
+                    <h4>فاز ۴: آموزش و ایجاد زیر ساخت پیاده‌سازی</h4>
+                    <p>برگزاری کارگاه‌ها و توانمندسازی تیم‌های داخلی برای اجرای سند.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- بخش ۵ – خروجی‌ها (Deliverables) -->
+    <section class="card">
+        <h2>بخش ۵: خروجی‌ها (Deliverables)</h2>
+        <div class="grid grid-3">
+            <div class="icon-card">
+                <div class="icon">📚</div>
+                <h4>سند PDF و نسخه چاپی</h4>
+                <p>سند کامل و حرفه‌ای، آماده برای استفاده دیجیتال و چاپ.</p>
+            </div>
+            <div class="icon-card">
+                <div class="icon">📁</div>
+                <h4>فایل‌های گرافیکی</h4>
+                <p>شامل لوگوها، الگوها، و قالب‌های قابل ویرایش برای تیم‌ها.</p>
+            </div>
+            <div class="icon-card">
+                <div class="icon">🖥️</div>
+                <h4>المان‌های دیجیتال</h4>
+                <p>قالب‌های آماده برای وب‌سایت، شبکه‌های اجتماعی و ایمیل.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش ۶ – ارزش‌آفرینی و مزایا -->
+    <section class="card">
+        <h2>بخش ۶: ارزش‌آفرینی و مزایای پروژه برای بانک</h2>
+        <p>اجرای این پروژه، با ایجاد انسجام و هم‌سویی کامل در پیام‌ها، عناصر بصری و لحن ارتباطی، تصویر بانک توسعه تعاون را در نگاه مشتریان و ذی‌نفعان ارتقا می‌دهد، هزینه و زمان تبلیغات را کاهش می‌دهد، هویت سازمانی کارکنان را تقویت می‌کند و روابط حرفه‌ای‌تری با شرکای تجاری و تأمین‌کنندگان رقم می‌زند؛ همچنین با پیشگیری از استفاده نادرست از برند و افزایش محبوبیت و شهرت بانک در سطح ملی، جایگاه آن را به‌عنوان نهادی معتبر، پیشرو و مورد اعتماد در ذهن و قلب مخاطبان تثبیت می‌کند.</p>
+        <div class="grid grid-4">
+            <div class="value-card"><div class="icon">📈</div><h4>ارتقای تصویر بانک</h4></div>
+            <div class="value-card"><div class="icon">💰</div><h4>کاهش هزینه تبلیغات</h4></div>
+            <div class="value-card"><div class="icon">👥</div><h4>تقویت هویت سازمانی</h4></div>
+            <div class="value-card"><div class="icon">🤝</div><h4>روابط حرفه‌ای‌تر</h4></div>
+            <div class="value-card"><div class="icon">🛡️</div><h4>حفاظت از برند</h4></div>
+            <div class="value-card"><div class="icon">❤️</div><h4>افزایش محبوبیت</h4></div>
+            <div class="value-card"><div class="icon">🏆</div><h4>تثبیت جایگاه ملی</h4></div>
+            <div class="value-card"><div class="icon">⭐</div><h4>افزایش اعتماد</h4></div>
+        </div>
+    </section>
+
+    <!-- بخش ۷ – زمان‌بندی و هزینه تقریبی -->
+    <section class="card">
+        <h2>بخش ۷: زمان‌بندی و هزینه تقریبی</h2>
+        
+        <h3>جدول زمان‌بندی فازها (۳ تا ۴ ماه)</h3>
+        <div class="gantt-chart-container">
+            <div class="gantt-chart">
+                <!-- Headers -->
+                <div class="gantt-header">فاز</div>
+                <div class="gantt-header">هفته ۱</div>
+                <div class="gantt-header">هفته ۲</div>
+                <div class="gantt-header">هفته ۳</div>
+                <div class="gantt-header">هفته ۴</div>
+                <div class="gantt-header">هفته ۵</div>
+                <div class="gantt-header">هفته ۶</div>
+                <div class="gantt-header">هفته ۷</div>
+                <div class="gantt-header">هفته ۸</div>
+                <div class="gantt-header">هفته ۹</div>
+                <div class="gantt-header">هفته ۱۰</div>
+                <div class="gantt-header">هفته ۱۱</div>
+			   <div class="gantt-header">هفته ۱۲</div>
+
+                <!-- Phase 1 -->
+                <div class="gantt-phase">فاز ۱ – تحقیق</div>
+                <div class="gantt-bar-container"><div class="gantt-bar gantt-bar-1"></div></div>
+
+                <!-- Phase 2 -->
+                <div class="gantt-phase">فاز ۲ – تدوین</div>
+                <div class="gantt-bar-container"><div class="gantt-bar gantt-bar-2"></div></div>
+
+                <!-- Phase 3 -->
+                <div class="gantt-phase">فاز ۳ – طراحی</div>
+                <div class="gantt-bar-container"><div class="gantt-bar gantt-bar-3"></div></div>
+                
+                <!-- Phase 4 -->
+                <div class="gantt-phase">فاز ۴ – تایید</div>
+                <div class="gantt-bar-container"><div class="gantt-bar gantt-bar-4"></div></div>
+                
+                <!-- Phase 5 -->
+                <div class="gantt-phase">فاز ۵ – آموزش</div>
+                <div class="gantt-bar-container"><div class="gantt-bar gantt-bar-5"></div></div>
+            </div>
+        </div>
+        <p style="font-size: 0.9em; text-align: center; margin-top: 1rem;">مدت کل پروژه: حدود ۳ ماه (۱۲ هفته)</p>
+
+
+    </section>
+
+    <!-- بخش ۸ – نتیجه‌گیری و دعوت به اقدام -->
+    <section class="card cta-card">
+        <h2>نتیجه‌گیری و دعوت به اقدام</h2>
+        <p>در میان تمام مسئولیت‌های یک بانک، هیچ وظیفه‌ای به اندازه پاسداری و پرورش برند، اثرگذار و ماندگار نیست. فناوری‌ها و ساختارها تغییر می‌کنند، مدیران می‌آیند و می‌روند، و بازار پیوسته چهره عوض می‌کند؛ اما برندی که بر بنیان صداقت، بینش و اعتماد شکل گرفته باشد، در دل‌ها ماندگار و در خاطرها جاودانه خواهد بود.</p>
+        <p>سند هویت برند بانک توسعه تعاون، نه یک اقدام تزئینی، که ابزاری راهبردی برای انسجام پیام، ارتقای تجربه مشتری، افزایش محبوبیت و تقویت جایگاه بانک در میان تمامی ذی‌نفعان است. این سند، زبان مشترکی خواهد ساخت که هر تصویر، هر پیام و هر تجربه از بانک، بازتابی هماهنگ از رسالت و ارزش‌های ما باشد.</p>
+        <p><strong>اکنون زمان آن است که با تصمیمی قاطع، این مسیر را آغاز کنیم. پیشنهاد می‌کنیم جلسه‌ای ویژه با حضور مدیران ارشد تشکیل شود تا جزئیات این پروژه بررسی و تایید شود و بانک توسعه تعاون گامی سرنوشت‌ساز برای تثبیت و ارتقای برند خود در حافظه ملی بردارد؛ فرصتی که امروز در دسترس است و فردا ممکن است از آنِ رقیبان باشد.</strong></p>
+        <a href="mailto:kavousi.n@gmail.com?subject=جلسه بررسی پروپوزال سند هویت برند" class="cta-button">برگزاری جلسه و شروع پروژه</a>
+    </section>
+
+</div>
+
+</body>
+</html>
